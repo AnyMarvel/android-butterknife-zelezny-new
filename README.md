@@ -1,10 +1,14 @@
 #ButterKnifeZeleznyNew
+
 中文: 兼容AndroidStudio 4.1.0+版本(最新版本兼容)
+
 English: Compatible with AndroidStudio 4.1.0+ version (compatible with the latest version)
 
 以下官方使用介绍
 
 The following official introduction
+
+download by Tag https://github.com/AnyMarvel/android-butterknife-zelezny-new/releases/tag/2.0.0
 
 # ButterKnifeZelezny
 
