@@ -1,0 +1,52 @@
+<idea-plugin version="2">
+    <id>eu.inmite.android.plugin.butterknifezelezny</id>
+    <name>Android ButterKnife Zelezny New</name>
+    <version>2.0.0-SNAPSHOT</version>
+    <vendor email="314599558@qq.com" url="https://github.com/AnyMarvel">AnyMarvel</vendor>
+
+    <description><![CDATA[
+      Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters.
+      ]]></description>
+
+    <change-notes><![CDATA[
+<html>
+
+  <b>2.0.0-SNAPSHOT</b>
+  <ul>https://github.com/AnyMarvel/android-butterknife-zelezny-new.git
+  </ul>
+
+  <b>1.6.0</b> (26/11/2020)
+  <ul>
+    <li>fix android studio4.1.0</li>
+  </ul>
+
+</html>
+      ]]></change-notes>
+
+    <idea-version since-build="123.72"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+                   on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.java</depends>
+    <actions>
+        <action id="AddInjectionsAction"
+                class="com.avast.android.butterknifezelezny.InjectAction"
+                text="Generate _Butterknife Injections"
+                icon="/icons/butterknife-zelezny.png"
+                description="Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters">
+
+            <keyboard-shortcut
+                    keymap="$default"
+                    first-keystroke="shift control B"/>
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="com.avast.android.butterknifezelezny.Settings"/>
+        <codeInsight.lineMarkerProvider language="JAVA"
+                                        implementationClass="com.avast.android.butterknifezelezny.navigation.NavigationMarkerProvider"/>
+    </extensions>
+</idea-plugin>

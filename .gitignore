@@ -1,0 +1,44 @@
+# Android generated
+gen/
+obj/
+
+# Ant
+# build.xml
+local.properties
+gradle-wrapper.properties
+# Maven
+target/
+pom.xml.*
+release.properties
+
+# Eclipse
+.externalToolBuilders/
+.settings
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Mac 
+.DS_Store
+
+# svn
+.svn
+
+# proguard
+proguard
+
+# Gradle
+.gradle
+build
+build/
+.idea
+gradle/
+gradlew
+gradlew.bat
+*.pyc
+
+idea-sandbox

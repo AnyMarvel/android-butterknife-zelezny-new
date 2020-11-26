@@ -1,0 +1,76 @@
+// 1.配置仓库 必要(仓库地址缺一不可)
+buildscript {
+    repositories {
+
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+
+        mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'
+        }
+
+    }
+}
+
+//2.插件 配置
+plugins {
+    id 'org.jetbrains.intellij' version '0.4.15'
+}
+
+//2.1 插件配置
+// 这两个插件是必备
+apply plugin: 'idea'
+apply plugin: 'org.jetbrains.intellij'
+//编译java必备
+apply plugin: 'java'
+//2.2
+//此处也必须设置用于 下载kotlin
+repositories {
+    mavenCentral()
+}
+
+
+def myPlugins = ['git4idea', 'coverage','android']
+def versionDotIndex = idea_version.indexOf('.')
+def intVersion = versionDotIndex == -1 ? Integer.parseInt(idea_version) : Integer.parseInt(idea_version.substring(0, versionDotIndex))
+if (intVersion >= 2019 || (intVersion < 1000 && intVersion >= 193)) {
+    myPlugins = ['git4idea', 'java', 'coverage','android']
+}
+
+//3.此处是用于设置基于的intellij的版本 并且会下载源码！！
+intellij {
+    //此处版本需要按照后面的配置一致，否则此处报错！！！！(IC-version)
+    version idea_version //这个是你要下载的源码的版本,参考此处https://www.jetbrains.com/intellij-repository/releases
+    plugins = myPlugins //Bundled plugin dependencies
+    pluginName plugin_name//插件的名称
+    updateSinceUntilBuild false
+    sandboxDirectory "idea-sandbox"
+//    sandboxDirectory "$project.buildDir/idea-sandbox/$idea_version"
+
+}
+
+
+//配置生成的Intellij Idea 的插件相关内容
+group 'android-butterknife-zelezny-new'
+//此处配置版本后，plugin.xml中的配置将失效
+version plugin_version
+
+allprojects {
+    group 'android-butterknife-zelezny-new'
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    compileJava.options.encoding = 'UTF-8'
+
+    //防止编译javadoc时候报错
+    tasks.withType(Javadoc) {
+        options.addStringOption('encoding', 'UTF-8')
+    }
+
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
