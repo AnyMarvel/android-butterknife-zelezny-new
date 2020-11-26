@@ -1,5 +1,5 @@
 <idea-plugin version="2">
-    <id>eu.inmite.android.plugin.butterknifezelezny</id>
+    <id>new.eu.inmite.android.plugin.butterknifezelezny</id>
     <name>Android ButterKnife Zelezny New</name>
     <version>2.0.0-SNAPSHOT</version>
     <vendor email="314599558@qq.com" url="https://github.com/AnyMarvel">AnyMarvel</vendor>
